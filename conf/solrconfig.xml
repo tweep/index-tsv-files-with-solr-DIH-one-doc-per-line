@@ -1172,12 +1172,7 @@
     </arr>
   </requestHandler>
 
-   <requestHandler name="/dataimport" class="org.apache.solr.handler.dataimport.DataImportHandler">
-     <lst name="defaults">
-     <str name="config">db-data-config.xml</str>
-     <str name="update.chain">dedupe</str>
-     </lst>
-  </requestHandler>
+
 
   <requestHandler name="/import_pheno_data" class="org.apache.solr.handler.dataimport.DataImportHandler">
       <lst name="defaults"> 
