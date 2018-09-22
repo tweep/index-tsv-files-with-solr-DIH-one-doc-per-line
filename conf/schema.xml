@@ -80,32 +80,6 @@ Reads_percent_MT" ];
 		<field name="PRIMARY_TISSUE"		type="string" indexed="true" stored="true" multiValued="false" required="false" />
 		<field name="SAMPLE_LABEL"          type="string" indexed="true" stored="true" multiValued="false" required="false" />
 		<field name="sizeFactor.gene"          type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
-		<field name="sizeFactor.exon"          type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
-		<field name="sizeFactor.exon_bin"      type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
-
-		<field name="RUN_ID"            type="string" indexed="true" stored="true" multiValued="false" required="false" />
-		<field name="LANE_NO"           type="string" indexed="true" stored="true" multiValued="false" required="false" />
-		<field name="LIB_ID"            type="string" indexed="true" stored="true" multiValued="false" required="false" />
-		<field name="MULTIPLEX_POOL_ID" type="string" indexed="true" stored="true" multiValued="false" required="false" />
-		<field name="NXG_DATA_ID"       type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
-
-		<field name="PRIMER_SEQ_1" type="string" indexed="true" stored="true" multiValued="false" required="false" />
-		<field name="PRIMER_NAME_1" type="string" indexed="true" stored="true" multiValued="false" required="false" />
-		<field name="PRIMER_SEQ_2" type="string" indexed="true" stored="true" multiValued="false" required="false" />
-		<field name="PRIMER_NAME_2" type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
-
-		<field name="Cell_type"            type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
-		<field name="Cell_ITGAE_status"    type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
-		<field name="Genes_detected_rpkm1" type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
-		<field name="Reads_n_total"        type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
-		<field name="Reads_n_concordant_uniq"  type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
-		<field name="Reads_percent_mapped"     type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
-		<field name="Reads_n_rRNA"             type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
-		<field name="Reads_percent_rRNA"       type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
-		<field name="Reads_n_MT"               type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
-		<field name="Reads_percent_MT"         type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
-
-		<field name="Sample_type"        type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
 
 		<field name="text"                type="string" indexed="true" stored="true" multiValued="false" required="false" />
 		<field name="lux_uri"             type="string" indexed="true" stored="true" multiValued="false" required="false" />
@@ -113,10 +87,7 @@ Reads_percent_MT" ];
 		<field name="lastModified"        type="string" indexed="true" stored="true" multiValued="false" required="false" />
 
   	    <field name="id"                  type="string"     indexed="true"  stored="true"  multiValued="false" required="true"/>  
-        <field name="bcb_query"           type="bcb_type"   indexed="true"  stored="true"  multiValued="true" required="false"/>
-        <field name="bcb_project"         type="bcb_type"   indexed="true"  stored="true"  multiValued="true" required="false"/>
-        <field name="bcb_sample"          type="bcb_type"   indexed="true"  stored="true"  multiValued="true" required="false"/>
-
+  
         <field name="_version_"             type="long"   indexed="true" stored="true" multiValued="false" />
 		<field name="name"                  type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
 
