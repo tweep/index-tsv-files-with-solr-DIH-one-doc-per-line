@@ -1,0 +1,5 @@
+SID	INVENTORY_SAMPLE_NAME	PRIMARY_TISSUE	SAMPLE_LABEL	sizeFactor
+AM432960	Human Mucosal cells	Colon	AM2432610 Human Mucosal cells	1.4
+AM432961	Human Mucosal cells	Colon	AM2432671 Human Mucosal cells	0.1
+AM432970	Human Mucosal cells	Colon	AM2432770 Human Mucosal cells	0.5
+AM432999	Human Mucosal cells	Colon	AM2432909 Human Mucosal cells	0.08

@@ -1,0 +1,156 @@
+<?xml version="1.0" ?>
+
+<schema name="sample-schema" version="1.5">
+  <types> 
+
+    <fieldType name="long" class="solr.TrieLongField" precisionStep="0" positionIncrementGap="0"/>
+    <fieldType name="tfloat" class="solr.TrieFloatField" positionIncrementGap="0" docValues="true" precisionStep="8"/>
+    <fieldType name="tfloats" class="solr.TrieFloatField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="8"/>
+    <fieldType name="tint" class="solr.TrieIntField" positionIncrementGap="0" docValues="true" precisionStep="8"/>
+    <fieldType name="tints" class="solr.TrieIntField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="8"/>
+    <fieldType name="tlong" class="solr.TrieLongField" positionIncrementGap="0" docValues="true" precisionStep="8"/>
+    <fieldType name="tlongs" class="solr.TrieLongField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="8"/> 
+    <fieldType name="point" class="solr.PointType" subFieldSuffix="_d" dimension="2"/>
+    <fieldType name="random" class="solr.RandomSortField" indexed="true"/>
+    <fieldType name="string" class="solr.StrField" sortMissingLast="true" docValues="true"/>
+    <fieldType name="strings" class="solr.StrField" sortMissingLast="true" docValues="true" multiValued="true"/>
+    <fieldType name="tdate" class="solr.TrieDateField" positionIncrementGap="0" docValues="true" precisionStep="6"/>
+    <fieldType name="tdates" class="solr.TrieDateField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="6"/>
+    <fieldType name="tdouble" class="solr.TrieDoubleField" positionIncrementGap="0" docValues="true" precisionStep="8"/>
+    <fieldType name="tdoubles" class="solr.TrieDoubleField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="8"/>
+    <fieldType name="binary" class="solr.BinaryField"/>
+    <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true"/>
+    <fieldType name="booleans" class="solr.BoolField" sortMissingLast="true" multiValued="true"/>
+    <fieldType name="date" class="solr.TrieDateField" positionIncrementGap="0" docValues="true" precisionStep="0"/>
+    <fieldType name="dates" class="solr.TrieDateField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="0"/> 
+
+
+  <!-- START jhv change -->
+
+    <!-- does not split on whitespace -->
+    <!-- matches case-sensitve and case-insensitve queries -->
+    <!-- builds nedge gram for index ! --> 
+
+  <fieldtype name="bcb_type" stored="false" indexed="true" class="solr.TextField" >
+      <analyzer type="index">
+        <!-- we tokenize the content of this field -->
+      <tokenizer class="solr.ClassicTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.ClassicFilterFactory"/>
+      <filter class="solr.PorterStemFilterFactory"/>
+    </analyzer>
+      <analyzer type="query">
+      <tokenizer class="solr.ClassicTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.ClassicFilterFactory"/>
+      <filter class="solr.PorterStemFilterFactory"/>
+    </analyzer>
+  </fieldtype>
+
+
+    <!-- new field type to enable searching for misspelled cell lines -->
+
+  <!-- allow case-insenitve search for cell line names: "HT-1080", "HT 1080", " 1080" or "HT1080" - we tokenize the content of this field -->
+  <fieldtype name="faulty_cell_line_name" stored="false" indexed="true" class="solr.TextField" >
+     <analyzer type="index">
+        <!-- we tokenize the content of this field -->
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+	  <filter class="solr.WordDelimiterFilterFactory"/>
+	 </analyzer>
+      <analyzer type="query">
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.WordDelimiterFilterFactory"/>
+    </analyzer>
+  </fieldtype>
+  </types>
+
+
+ <fields>   
+  <!-- jhv v_sam_inventory_change -->  
+		<field name="rawLine"           type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
+		<field name="message"           type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
+
+Reads_percent_MT" ];
+
+
+		<field name="SAMPLE_ID"           type="string" indexed="true" stored="true" multiValued="false" required="false" />
+		<field name="INVENTORY_SAMPLE_NAME" type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
+		<field name="PRIMARY_TISSUE"		type="string" indexed="true" stored="true" multiValued="false" required="false" />
+		<field name="SAMPLE_LABEL"          type="string" indexed="true" stored="true" multiValued="false" required="false" />
+		<field name="sizeFactor.gene"          type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
+		<field name="sizeFactor.exon"          type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
+		<field name="sizeFactor.exon_bin"      type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
+
+		<field name="RUN_ID"            type="string" indexed="true" stored="true" multiValued="false" required="false" />
+		<field name="LANE_NO"           type="string" indexed="true" stored="true" multiValued="false" required="false" />
+		<field name="LIB_ID"            type="string" indexed="true" stored="true" multiValued="false" required="false" />
+		<field name="MULTIPLEX_POOL_ID" type="string" indexed="true" stored="true" multiValued="false" required="false" />
+		<field name="NXG_DATA_ID"       type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
+
+		<field name="PRIMER_SEQ_1" type="string" indexed="true" stored="true" multiValued="false" required="false" />
+		<field name="PRIMER_NAME_1" type="string" indexed="true" stored="true" multiValued="false" required="false" />
+		<field name="PRIMER_SEQ_2" type="string" indexed="true" stored="true" multiValued="false" required="false" />
+		<field name="PRIMER_NAME_2" type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
+
+		<field name="Cell_type"            type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
+		<field name="Cell_ITGAE_status"    type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
+		<field name="Genes_detected_rpkm1" type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
+		<field name="Reads_n_total"        type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
+		<field name="Reads_n_concordant_uniq"  type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
+		<field name="Reads_percent_mapped"     type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
+		<field name="Reads_n_rRNA"             type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
+		<field name="Reads_percent_rRNA"       type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
+		<field name="Reads_n_MT"               type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
+		<field name="Reads_percent_MT"         type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
+
+		<field name="Sample_type"        type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
+
+		<field name="text"                type="string" indexed="true" stored="true" multiValued="false" required="false" />
+		<field name="lux_uri"             type="string" indexed="true" stored="true" multiValued="false" required="false" />
+		<field name="size"                type="string" indexed="true" stored="true" multiValued="false" required="false" />
+		<field name="lastModified"        type="string" indexed="true" stored="true" multiValued="false" required="false" />
+
+  	    <field name="id"                  type="string"     indexed="true"  stored="true"  multiValued="false" required="true"/>  
+        <field name="bcb_query"           type="bcb_type"   indexed="true"  stored="true"  multiValued="true" required="false"/>
+        <field name="bcb_project"         type="bcb_type"   indexed="true"  stored="true"  multiValued="true" required="false"/>
+        <field name="bcb_sample"          type="bcb_type"   indexed="true"  stored="true"  multiValued="true" required="false"/>
+
+        <field name="_version_"             type="long"   indexed="true" stored="true" multiValued="false" />
+		<field name="name"                  type="string" indexed="true" stored="true" multiValued="false" required="false" /> 
+
+		<field name="version"               type="string" indexed="true" stored="true" multiValued="false" required="false" />
+
+<!--
+       <copyField source="SAMPLE_NAME"                dest="bcb_sample" maxChars="30000" /> 
+-->
+       
+
+  <!-- copy field directives for type-ahead -->  
+  <!-- 
+  <field name="ta_cname"             type="text_key"   indexed="true"  stored="true"  multiValued="false" required="false"/> 
+  <field name="ta_cell_name"         type="faulty_cell_line_name"      indexed="true"  stored="true"  multiValued="true" required="false"/>
+  -->
+  <!-- directives for FedSearch - the fields below will be searched by FedSearch --> 
+  <!-- 
+
+  <copyField source="cl_name"        dest="ta_cell_name" maxChars="30000" />
+  <copyField source="cname"          dest="ta_cell_name" maxChars="30000" />
+
+  -->
+
+   <!-- END jhv change --> 
+
+ </fields>
+
+ <!-- field to use to determine and enforce document uniqueness. -->
+ <uniqueKey>id</uniqueKey>
+
+ <!-- field for the QueryParser to use when an explicit fieldname is absent -->
+ <defaultSearchField>name</defaultSearchField>
+
+ <!-- SolrQueryParser configuration: defaultOperator="AND|OR" -->
+ <solrQueryParser defaultOperator="OR"/>
+</schema>
+
